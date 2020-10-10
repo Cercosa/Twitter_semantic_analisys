@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <title>{{ page_title }}</title>
+    </head>
+    <body>
+    <h1>Введите:</h1>
+        <form action="/result" method="POST">
+            <div class="form-group">
+                {{ form.company.label }}<br>
+                {{ form.company() }} {{form.submit()}}
+            </div>     
+        </form>
+    </body>
+</html>
