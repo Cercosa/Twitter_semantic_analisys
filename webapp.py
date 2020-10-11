@@ -13,9 +13,8 @@ app.config.from_pyfile('config.py')
 
 @app.route('/')
 def main_page():
-    title = 'Заголовок'
     user_request = RequestForm()
-    return render_template('start_page.html', form=user_request, page_title=title)
+    return render_template('start_page.html', form=user_request)
 
 @app.route('/result', methods = ['POST'])
 def result_page():
