@@ -6,15 +6,16 @@ import gensim
 from gensim.models import Word2Vec
 
 
-def main():
-    def preprocess_text(text):
-        text = text.lower().replace("ё", "е")
-        text = re.sub(r'((www\.[^\s]+)|(https?://[^\s]+))', 'URL', text)
-        text = re.sub(r'@[^\s]+', 'USER', text)
-        text = re.sub('[^a-zA-Zа-яА-Я1-9]+', ' ', text)
-        text = re.sub(' +', ' ', text)
-        return text.strip()
+def preprocess_text(text):
+    text = text.lower().replace("ё", "е")
+    text = re.sub(r'((www\.[^\s]+)|(https?://[^\s]+))', 'URL', text)
+    text = re.sub(r'@[^\s]+', 'USER', text)
+    text = re.sub('[^a-zA-Zа-яА-Я1-9]+', ' ', text)
+    text = re.sub(' +', ' ', text)
+    return text.strip()
 
+
+def main():
     conn = sqlite3.connect('sentiment.db')
     c = conn.cursor()
 

@@ -4,7 +4,7 @@ from form import RequestForm
 import sys
 import os
 
-if sys.platform.lower() == 'win32':  # для корректного отображения в консоли
+if sys.platform.lower() == 'win32':  # to display correctly in the console
     os.system('color')
 
 app = Flask(__name__)
