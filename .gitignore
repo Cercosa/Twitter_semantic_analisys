@@ -129,3 +129,12 @@ dmypy.json
 .pyre/
 negative.csv
 positive.csv
+
+*.hdf5
+*.w2v
+*.db
+*.txt
+*.npy
+.vscode
+settings.py
+try.py
