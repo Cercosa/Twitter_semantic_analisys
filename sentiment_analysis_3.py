@@ -147,6 +147,7 @@ model.load_weights('cnn-trainable-05-0.77.hdf5')
 predicted = np.round(model.predict(x_test_seq))
 print(classification_report(y_test, predicted, digits=5))
 
-# to try working model after mashin learning (comment training strings 132-148)
+# to try working model after maсhin learning (first to comment training
+# strings 132-148)
 text_to_analys = input('input your text for analys:')
 print(model.predict(get_sequences(tokenizer, [text_to_analys])))

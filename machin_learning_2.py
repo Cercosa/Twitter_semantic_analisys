@@ -32,8 +32,8 @@ def preprocess_text(text):
 
 data = [preprocess_text(t) for t in raw_data]
 
-if __name__ == "__main__":
-    pass
+# if __name__ == "__main__":
+    # pass
 
 x_train, x_test, y_train, y_test = train_test_split(data,
                                                     labels, test_size=0.2,
@@ -50,8 +50,8 @@ def writing_tweets():
                 print(tweet, file=f)
 
 
-if __name__ == "__main__":
-    pass
+# if __name__ == "__main__":
+    # pass
 
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s',
                     level=logging.INFO)
