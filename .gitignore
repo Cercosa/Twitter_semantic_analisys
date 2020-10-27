@@ -127,9 +127,20 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+negative.csv
+positive.csv
+
+*.hdf5
+*.w2v
+*.db
+*.txt
+*.npy
+.vscode
+settings.py
+try.py
 
 config.py
-.vscode/
 data/
-sentiment.db
-tweets.db
+
+machin_learning_2.py
+sentiment_analysis_3.py
