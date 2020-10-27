@@ -138,3 +138,6 @@ positive.csv
 .vscode
 settings.py
 try.py
+
+config.py
+data/
