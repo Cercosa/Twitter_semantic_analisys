@@ -7,7 +7,7 @@ def text_comments_mining(hashtag):
     api = tweepy.API(auth)
     all_tweets = []
     for tweet in tweepy.Cursor(api.search, q=hashtag, rpp=100).items(5):
-        all_tweets.append(tweet.text)
+        all_tweets.append(tweet)
     return all_tweets
 
 
