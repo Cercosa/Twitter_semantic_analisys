@@ -12,7 +12,7 @@ def text_comments_mining(hashtag):
         print(f"Tweet: {tweet.text}.\nResult of analysis: {result}.")
         new_tweet = Tweets_sentiment(hashtag=hashtag, tweet_id=int(tweet.id), tweet_date=tweet.created_at, sentiment=float(result))
         db.session.add(new_tweet)
-        db.session.commit()
+    db.session.commit()
 
 
 if __name__ == "__main__":
