@@ -65,9 +65,8 @@ def get_sequences(tokenizer, x):
     return pad_sequences(sequences, maxlen=config.SENTENCE_LENGTH)
 
 
-def sentiment_analysis():
+def sentiment_analysis(text):
     model, tokenizer = main()
-    text = input("Введите текст: ")
     return model.predict(get_sequences(tokenizer, [text]))
 
 
@@ -129,7 +128,6 @@ def main():
 
     model = Model(inputs=[tweet_input], outputs=[output])
     model.compile(loss='binary_crossentropy', optimizer='adam', metrics=[compute_precision, compute_recall, f1])
-    model.summary()
 
     y_train = np.array(y_train)
 
@@ -139,13 +137,9 @@ def main():
 
     model.load_weights('data/cnn-frozen-embeddings-08-0.76.hdf5')
 
-    predicted = np.round(model.predict(x_test_seq))
-    print(classification_report(y_test, predicted, digits=5))
-
     model.layers[1].trainable = True
     adam = optimizers.Adam(lr=0.0001)
     model.compile(loss='binary_crossentropy', optimizer=adam, metrics=[compute_precision, compute_recall, f1])
-    model.summary()
 
     # put into comments to avoid REtraining
     # checkpoint = ModelCheckpoint("data/cnn-trainable-{epoch:02d}-{val_f1:.2f}.hdf5", monitor='val_f1', save_best_only=True, mode='max', period=1)
@@ -153,11 +147,9 @@ def main():
 
     model.load_weights('data/cnn-trainable-05-0.77.hdf5')
 
-    predicted = np.round(model.predict(x_test_seq))
-    print(classification_report(y_test, predicted, digits=5))
     return model, tokenizer
 
 
 if __name__ == "__main__":
-    main()
+    text = input("Введите текст: ")
     print(sentiment_analysis())
