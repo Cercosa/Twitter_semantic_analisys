@@ -66,11 +66,11 @@ def get_sequences(tokenizer, x):
 
 
 def sentiment_analysis(text):
-    model, tokenizer = main()
+    model, tokenizer = get_model_tokenizer()
     return model.predict(get_sequences(tokenizer, [text]))
 
 
-def main():
+def get_model_tokenizer():
     # Loading sentiment data
     n = ['id', 'date', 'name', 'text', 'typr', 'rep', 'rtw', 'faw', 'stcount', 'foll', 'frien', 'listcount']
 
