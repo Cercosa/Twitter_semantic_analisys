@@ -1,4 +1,4 @@
-from model import Tweets_sentiment
+
 
 # sending data to db
 # from datetime import datetime
@@ -9,15 +9,22 @@ from model import Tweets_sentiment
 
 # receiving data from db
 
+from model import Tweets_sentiment
 
-def average_semantic_evaluation():
+
+def average_semantic_evaluation(requested_hashtag):
     semantic_evaluations = []
-    tweets = Tweets_sentiment.query.all()
-    for tweet in tweets:
-        sem_evaluation = tweet.sentiment
-        semantic_evaluations.append(sem_evaluation)
-    return(sum(semantic_evaluations) / len(semantic_evaluations))
-
+    tweets = Tweets_sentiment.query.filter_by(hashtag=requested_hashtag).all()
+    try:
+        for tweet in tweets:
+            sem_evaluation = tweet.sentiment
+            semantic_evaluations.append(sem_evaluation)
+            result = sum(semantic_evaluations) / len(semantic_evaluations)
+        return result
+    except UnboundLocalError:
+        print("requested hashtag does not exist")
+    
 
 if __name__ == "__main__":
-    print(average_semantic_evaluation())
+    requested_hashtag = input('Input your hashtag ', )
+    print(average_semantic_evaluation(requested_hashtag))
