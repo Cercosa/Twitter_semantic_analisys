@@ -143,6 +143,4 @@ config.py
 data/
 machin_learning_2.py
 sentiment_analysis_3.py
-create_db.py
-model.py
 API_hashtags_mining_1.py
