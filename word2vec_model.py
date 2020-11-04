@@ -35,7 +35,7 @@ def main():
     # train model
     model = Word2Vec(data, size=200, window=5, min_count=3,
                      workers=multiprocessing.cpu_count())
-    model.save("data/model.w2v")
+    model.save("data/model.w2v")  # choose folder to save model
 
 
 if __name__ == "__main__":
