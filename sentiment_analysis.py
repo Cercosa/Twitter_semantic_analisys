@@ -131,25 +131,25 @@ def get_model_tokenizer():
 
     y_train = np.array(y_train)
 
-    # Training and evaluating the CNN (put into comments to avoid REtraining)
+    # Training and evaluating the CNN (run 1-136 then put into comments 135-136 to avoid REtraining)
     # Checkpoint = ModelCheckpoint("data/cnn-frozen-embeddings-{epoch:02d}-{val_f1:.2f}.hdf5", monitor='val_f1', save_best_only=True, mode='max', period=1)
     # history = model.fit(x_train_seq, y_train, batch_size=32, epochs=10, validation_split=0.25, callbacks=[checkpoint])
 
-    model.load_weights('data/cnn-frozen-embeddings-08-0.76.hdf5')
+    model.load_weights('data/cnn-frozen-embeddings-08-0.76.hdf5')  # load the best result
 
     model.layers[1].trainable = True
     adam = optimizers.Adam(lr=0.0001)
     model.compile(loss='binary_crossentropy', optimizer=adam, metrics=[compute_precision, compute_recall, f1])
 
-    # put into comments to avoid REtraining
+    # run 1-146 then put into comments 145-146 to avoid REtraining
     # checkpoint = ModelCheckpoint("data/cnn-trainable-{epoch:02d}-{val_f1:.2f}.hdf5", monitor='val_f1', save_best_only=True, mode='max', period=1)
     # history_trainable = model.fit(x_train_seq, y_train, batch_size=32, epochs=5, validation_split=0.25, callbacks=[checkpoint])
 
-    model.load_weights('data/cnn-trainable-05-0.77.hdf5')
+    model.load_weights('data/cnn-trainable-05-0.77.hdf5')  # load the best result
 
     return model, tokenizer
 
 
 if __name__ == "__main__":
     text = input("Введите текст: ")
-    print(sentiment_analysis())
+    print(sentiment_analysis(text))
