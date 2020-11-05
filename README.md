@@ -8,26 +8,22 @@ Twitter semantic analysis - это flask-приложение, которое с
 1. Клонируйте репозиторий https://github.com/Cercosa/Twitter_semantic_analysis
 2. Создайте виртуальное окружение
 3. Установите зависимости `pip install -r requirements.txt`
-4. Создайте файл `settings.py`
-5. Создайте в `settings.py` переменные:
-```
-API_key = 
-API_secret_key = 
-```
-6. Создайте файл `config.py`
-7. Создайте в `config.py` переменные:
+4. Создайте файл `config.py`
+5. Создайте в `config.py` переменные:
 ```
 SECRET_KEY = 
-SENTENCE_LENGTH = 26 
-NUM = 100000
+SENTENCE_LENGTH = 26 - высота матрицы (максимальное количество слов в твите)
+NUM = 100000 - размер словаря
+API_key = ключ, выдается твитером при открытии девелоперского аккаунта
+API_secret_key = ключ, выдается твитером при открытии девелоперского аккаунта
 ```
 
 ## Создание и обучение модели
 Обучение проводилось по https://habr.com/company/mailru/blog/417767/
 Данные для обучения взяты из датасета Юлии Рубцовой http://study.mokoron.com/
 
-Выполните `word2vec_model.py`
-Затем выполните `sentiment_analysis.py`
+Выполните `word2vec_model.py`- преобразование базы данных твитов в векторное отображение и обучение Word2Vec-модели с помощью библиотеки Gensim
+Затем выполните `sentiment_analysis.py`- обучение Word2Vec-модели на основе базы данных положительных и отрицательных твитов
 
 ## Создание базы данных твитов
 Выполните `create_bd.py`

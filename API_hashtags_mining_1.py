@@ -1,14 +1,13 @@
 import tweepy
-import settings
+import config
 from sentiment_analysis import get_model_tokenizer, get_sequences
 from model import Tweets_sentiment
 from db import db
 from datetime import datetime, timedelta
-auth = tweepy.OAuthHandler(settings.API_key, settings.API_secret_key)
+auth = tweepy.OAuthHandler(config.API_key, config.API_secret_key)
 
 
 def text_comments_mining(hashtag):
-    #with current_app.app_context():
     api = tweepy.API(auth)
     model, tokenizer = get_model_tokenizer()
     delta = timedelta(days=1)
