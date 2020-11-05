@@ -26,6 +26,7 @@ def text_comments_mining(hashtag):
 
 if __name__ == "__main__":
     from webapp import app
-    db.init_app(app)
-    hashtag = input('Input your hashtag starting with "#"', )
-    tweets = text_comments_mining(hashtag)
+    with app.app_context():
+        db.init_app(app)
+        hashtag = input('Input your hashtag starting with "#"', )
+        tweets = text_comments_mining(hashtag)
