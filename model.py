@@ -1,12 +1,4 @@
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-import os
-from webapp import app
-
-basedir = os.path.abspath(os.path.dirname(__file__))
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'tweets.db')
-
-db = SQLAlchemy(app)
+from db import db
 
 
 class Tweets_sentiment(db.Model):
